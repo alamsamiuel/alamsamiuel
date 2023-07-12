@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Header -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Lessons</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="Styles/style.css">
+    <script src="https://kit.fontawesome.com/0ecb2c1182.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<!-- Body -->
+<body>
+
+    <div id="app">
+        <header>
+            <h1 v-text="sitename"></h1>
+            <button v-html="cartCount + ' ' + cartButton" v-on:click="showCheckout"
+                v-if="cartCount  && showProduct"></button>
+            <!-- Cart Button -->
+            <button v-html="cartCount + ' ' + cartButton" v-on:click="showCheckout" v-else-if="!showProduct"></button>
+            <button v-html="cartCount + ' ' + cartButton" disabled v-else></button>
+        </header>
+       <!-- Products Page -->
+        <div v-if="showProduct">
+            <!-- Search Field -->
+            <div class="searchBox">
+                <p>
+                    Search:
+                    <input type="text" class="searchInput" v-model="searchTerm" />
+                </p>
+            </div>
+            <
+            
+            <!-- Sorting Products Based on their prices and a to z  -->
+            <div class="searchAndSort">
+                <p><input type="radio" id="priceLowHigh" value="priceLowHigh" v-model="sortStyle">
+                    <label for="priceLowHigh">Price: Low to High</label>
+                </p>
+                <p>
+                    <input type="radio" id="priceHighLow" value="priceHighLow" v-model="sortStyle">
+                    <label for="priceHighLow">Price : High to Low</label>
+                </p>
+                <p>
+                    <input type="radio" id="aToZ" value="aToZ" v-model="sortStyle">
+                    <label for="aToZ">Name: A to Z</label>
+                </p>
+                <p>
+                    <input type="radio" id="zToA" value="zToA" v-model="sortStyle">
+                    <label for="zToA">Name: Z to A</label>
+                </p>
+
+            </div>
+           
+            
+            <!-- Searched Products Displaed here  -->
+            <div v-if="searchTerm !== ''">
+                <div v-for="lessons in searchField" class="lesson">
+                    <img class="lessonImage" v-bind:src="lessons.image">
+                    <h2>Subject: {{lessons.name}}</h2>
+                    <p>Location: {{lessons.location}}</p>
+                    <p>Price: £{{lessons.price}}</p>
+                    <p>Spaces available: {{lessons.spaces}}</p>
+                    <button v-html="lessonButton" v-on:click="addToCart(lessons)" v-if="canAdd(lessons)"></button>
+                    <button v-html="lessonButton" disabled v-else></button>
+                </div>
+            </div>
+            
+            
+            <!-- Lessons Added View -->
+            <div v-else-if="sortStyle === '' ">
+                <div v-for="lessons in lessons" class="lesson">
+                    <img class="lessonImage" v-bind:src="lessons.image">
+                    <h2>Subject: {{lessons.name}}</h2>
+                    <p>Location: {{lessons.location}}</p>
+                    <p>Price: £{{lessons.price}}</p>
+                    <p>Spaces available: {{lessons.spaces}}</p>
+                    <button v-html="lessonButton" v-on:click="addToCart(lessons)" v-if="canAdd(lessons)"></button>
+                    <button v-html="lessonButton" disabled v-else></button>
+                </div>
+            </div>
+
+            <!-- Sort products by low to high -->
+            <div v-else-if="sortStyle === 'priceLowHigh'">
+                <div v-for="lessons in sortedlessons" class="lesson">
+                    <img class="lessonImage" v-bind:src="lessons.image">
+                    <h2>Subject: {{lessons.name}}</h2>
+                    <p>Location: {{lessons.location}}</p>
+                    <p>Price: £{{lessons.price}}</p>
+                    <p>Spaces available: {{lessons.spaces}}</p>
+                    <button v-html="lessonButton" v-on:click="addToCart(lessons)" v-if="canAdd(lessons)"></button>
+                    <button v-html="lessonButton" disabled v-else></button>
+                </div>
+            </div>
+
+            <!-- Sorts by price high to low -->
+            <div v-else-if="sortStyle === 'priceHighLow'">
+                <div v-for="lessons in sortedlessonsHigh" class="lesson">
+                    <img class="lessonImage" v-bind:src="lessons.image">
+                    <h2>Subject: {{lessons.name}}</h2>
+                    <p>Location: {{lessons.location}}</p>
+                    <p>Price: £{{lessons.price}}</p>
+                    <p>Spaces available: {{lessons.spaces}}</p>
+                    <button v-html="lessonButton" v-on:click="addToCart(lessons)" v-if="canAdd(lessons)"></button>
+                    <button v-html="lessonButton" disabled v-else></button>
+                </div>
+            </div>
+
+            <!-- Sort by Alphabets A to Z -->
+            <div v-else-if="sortStyle === 'aToZ'">
+                <div v-for="lessons in alphabetProducts" class="lesson">
+                    <img class="lessonImage" v-bind:src="lessons.image">
+                    <h2>Subject: {{lessons.name}}</h2>
+                    <p>Location: {{lessons.location}}</p>
+                    <p>Price: £{{lessons.price}}</p>
+                    <p>Spaces available: {{lessons.spaces}}</p>
+                    <button v-html="lessonButton" v-on:click="addToCart(lessons)" v-if="canAdd(lessons)"></button>
+                    <button v-html="lessonButton" disabled v-else></button>
+                </div>
+            </div>
+
+            <!-- Sort by Alphabets Z to A -->
+            <div v-else-if="sortStyle === 'zToA'">
+                <div v-for="lessons in alphabetProductsZ" class="lesson">
+                    <img class="lessonImage" v-bind:src="lessons.image">
+                    <h2>Subject: {{lessons.name}}</h2>
+                    <p>Location: {{lessons.location}}</p>
+                    <p>Price: £{{lessons.price}}</p>
+                    <p>Spaces available: {{lessons.spaces}}</p>
+                    <button v-html="lessonButton" v-on:click="addToCart(lessons)" v-if="canAdd(lessons)"></button>
+                    <button v-html="lessonButton" disabled v-else></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Show checkout page for products -->
+        <div class="checkout" v-else>
+            <h2 class="pageHeader">Shopping Cart</h2>
+
+            <!-- Checking if the product if it matches the id or anything  -->
+            <div v-for="lessons in lessons" class="cartProducts">
+                <span v-text="showInCart(lessons,lessons.id)"></span>
+                <span v-if="counter(lessons.id) > 0">x</span>
+                <span v-text="counter(lessons.id)"></span>
+                <button v-text="inCartButton" v-if="counter(lessons.id) > 0" @click="removeFromCart(lessons)"></button>
+
+            </div>
+
+            <!-- Details view about the customer  -->
+            <div class="basket">
+                <p class="nameField">
+                    Name:
+                    <input id="nameid" class="inputField" onkeyup="btnConfirm()" v-model="order.Name" />
+                </p>
+
+                <p class="passwordField">
+                    Phone Number:
+                    <input id="phoneid" class="PhoneinputField" onkeyup="btnConfirm()" v-model="order.phoneNo" />
+                </p>
+
+                <button id="button" class="submitBtn" type="submit" disabled @click="placeOrder">Confirm</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Important Imports -->
+    <script src="Scripts/lessons.js"></script>
+    <script src="Scripts/script.js"></script>
+</body>
+
+</html>

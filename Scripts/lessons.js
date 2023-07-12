@@ -1,0 +1,85 @@
+
+// Lessons having 5 spaces each
+
+lessons = [
+    {
+        id: 1,
+        name: "Maths",
+        location: "London",
+        price: 10,
+        image: "assets/math.png",
+        spaces: 5,
+    },
+    {
+        id: 2,
+        name: "English",
+        location: "Brimingham",
+        price: 20,
+        image: "assets/english.png",
+        spaces: 5,
+    },
+    {
+        id: 3,
+        name: "Physics",
+        location: "York",
+        price: 30,
+        image: "assets/science.jpeg",
+        spaces: 5,
+    },
+    {
+        id: 4,
+        name: "French",
+        location: "Cambridge",
+        price: 40,
+        image: "assets/French.jpeg",
+        spaces: 5,
+    },
+    {
+        id: 5,
+        name: "Chemistry",
+        location: "Oxford",
+        price: 50,
+        image: "assets/Chemistry.png",
+        spaces: 5,
+    },
+    {
+        id: 6,
+        name: "Geography",
+        location: "Northampton",
+        price: 60,
+        image: "assets/geography.jpeg",
+        spaces: 5,
+    },
+    {
+        id: 7,
+        name: "Statistics",
+        location: "Brent Cross",
+        price: 70,
+        image: "assets/math.png",
+        spaces: 5,
+    },
+    {
+        id: 8,
+        name: "IT",
+        location: "Hendon",
+        price: 80,
+        image: "assets/IT.png",
+        spaces: 5,
+    },
+    {
+        id: 9,
+        name: "History",
+        location: "Milton Keynes",
+        price: 90,
+        image: "assets/history.jpeg",
+        spaces: 5,
+    },
+    {
+        id: 10,
+        name: "Biology",
+        location: "Hereford",
+        price: 100,
+        image: "assets/Biology.png",
+        spaces: 5,
+    }
+]
