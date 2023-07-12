@@ -23,7 +23,7 @@ lessons = [
         name: "Physics",
         location: "York",
         price: 30,
-        image: "assets/science.jpeg",
+        image: "assets/science.png",
         spaces: 5,
     },
     {
@@ -31,7 +31,7 @@ lessons = [
         name: "French",
         location: "Cambridge",
         price: 40,
-        image: "assets/French.jpeg",
+        image: "assets/french.png",
         spaces: 5,
     },
     {
@@ -47,7 +47,7 @@ lessons = [
         name: "Geography",
         location: "Northampton",
         price: 60,
-        image: "assets/geography.jpeg",
+        image: "assets/geography.png",
         spaces: 5,
     },
     {
@@ -71,7 +71,7 @@ lessons = [
         name: "History",
         location: "Milton Keynes",
         price: 90,
-        image: "assets/history.jpeg",
+        image: "assets/history.png",
         spaces: 5,
     },
     {
