@@ -15,7 +15,7 @@ lessons = [
         name: "English",
         location: "Brimingham",
         price: 20,
-        image: "assets/english.png",
+        image: "assets/eng.png",
         spaces: 5,
     },
     {
@@ -23,7 +23,7 @@ lessons = [
         name: "Physics",
         location: "York",
         price: 30,
-        image: "assets/science.png",
+        image: "assets/sc.png",
         spaces: 5,
     },
     {
@@ -31,7 +31,7 @@ lessons = [
         name: "French",
         location: "Cambridge",
         price: 40,
-        image: "assets/french.png",
+        image: "assets/fren.png",
         spaces: 5,
     },
     {
@@ -39,7 +39,7 @@ lessons = [
         name: "Chemistry",
         location: "Oxford",
         price: 50,
-        image: "assets/Chemistry.png",
+        image: "assets/chem.png",
         spaces: 5,
     },
     {
@@ -47,7 +47,7 @@ lessons = [
         name: "Geography",
         location: "Northampton",
         price: 60,
-        image: "assets/geography.png",
+        image: "assets/geo.png",
         spaces: 5,
     },
     {
@@ -63,7 +63,7 @@ lessons = [
         name: "IT",
         location: "Hendon",
         price: 80,
-        image: "assets/IT.png",
+        image: "assets/info.png",
         spaces: 5,
     },
     {
@@ -71,7 +71,7 @@ lessons = [
         name: "History",
         location: "Milton Keynes",
         price: 90,
-        image: "assets/history.png",
+        image: "assets/his.png",
         spaces: 5,
     },
     {
@@ -79,7 +79,7 @@ lessons = [
         name: "Biology",
         location: "Hereford",
         price: 100,
-        image: "assets/Biology.png",
+        image: "assets/bio.png",
         spaces: 5,
     }
 ]
